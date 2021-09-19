@@ -8,6 +8,10 @@ import { Grid } from '../components/grid';
 export default function Home() {
   return (
     <div>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      />
       <Head>
         <title>Orcish Revenge Item Generator</title>
         <link rel="icon" href="/favicon.ico" />

@@ -19,7 +19,7 @@ export const LinkCard: React.FC<LinkCardProps> = ({children, href}) => {
   return (
     <Link href={href}>
       <a
-        className={sharedStyles.cardLink}
+        className={`${sharedStyles.card} ${sharedStyles.cardLink}`}
       >
         {children}
       </a>

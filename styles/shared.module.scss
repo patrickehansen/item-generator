@@ -76,3 +76,21 @@
 .pullRight {
   float: right;
 }
+
+.center {
+  margin: auto;
+  display: block;
+  text-align: center;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.justifyEnd {
+  justify-content: end;
+}
+
+.justifyCenter {
+  justify-content: center;
+}
