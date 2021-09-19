@@ -53,3 +53,26 @@
   max-width: 800px;
   margin-top: 3rem;
 }
+
+.form {
+  width: 480px;
+  label {
+    margin-right: 10px;
+  }
+
+  input {
+    padding: 5px;
+    width: 100%;
+  }
+
+  select {
+    padding: 5px;
+    width: 100%;
+  }
+
+
+}
+
+.pullRight {
+  float: right;
+}

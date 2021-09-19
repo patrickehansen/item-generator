@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { LinkCard } from '../../components/card'
 import styles from '../../styles/shared.module.scss'
 
 export default function Materials() {
@@ -15,7 +16,12 @@ export default function Materials() {
           Welcome to Materials
         </h1>
 
-        
+        <LinkCard href="/materials/new">
+          <h3>
+            Add New
+          </h3>
+          <p>Detail a new material for use</p>
+        </LinkCard>
       </main>
     </div>
   )
