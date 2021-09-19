@@ -1,11 +1,11 @@
 import Link from 'next/link'
-import styles from '../../styles/home.module.scss'
+import styles from '../../styles/shared.module.scss'
 
-export default function Home() {
+export default function Materials() {
   return (
-    <div className={styles.container}>
+    <div>
       <Link href="/">
-        <a >
+        <a className={styles.back}>
           ← Back to overview
         </a>
       </Link>
