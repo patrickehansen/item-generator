@@ -1,1 +1,1 @@
-# item-generator
+item generator for Orcish Revenge
