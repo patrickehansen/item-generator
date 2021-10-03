@@ -94,3 +94,46 @@
 .justifyCenter {
   justify-content: center;
 }
+
+.successPanel {
+  background-color: #ace0ac;
+  color: #376e37;
+  font-size: 22px;
+  min-width: 20%;
+  margin: 0.5rem;
+  flex-basis: 45%;
+  padding: 0.5rem 1.5rem;
+  text-align: left;
+  text-decoration: none;
+  border: 1px solid #eaeaea;
+  border-radius: 10px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+
+  svg {
+    position: relative;
+    top: 4px;
+  }
+}
+
+.link {
+  cursor: pointer;
+}
+
+.link:hover {
+  background-color: azure;
+  transition: background-color 0.25s ease;
+}
+
+.tableHeader {
+  background-color: #82cbed;
+  border-bottom: solid 2px black;
+}
+
+.table {
+  border: solid 1px gray;
+
+  thead th {
+    font-size: 16px;
+    font-weight: 600;
+  }
+}

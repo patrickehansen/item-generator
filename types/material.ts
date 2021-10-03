@@ -1,5 +1,5 @@
 export interface Material {
-  MaterialID: string;
+  MaterialID?: string;
   Name: string;
   Category: string;
   MeltingTemperature: number;
@@ -8,4 +8,16 @@ export interface Material {
   Damage: number;
   Armor: number;
   Weight: number;
+}
+
+export interface MaterialState {
+  allMaterials: Material[];
+  materialMap: {
+    [ key: string] : Material[];
+  }
+}
+
+export interface MaterialAction {
+  data: Material | Material[];
+  type: string;
 }
