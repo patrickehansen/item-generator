@@ -13,6 +13,9 @@ export interface Material {
 export interface MaterialState {
   allMaterials: Material[];
   materialMap: {
+    [ key: string] : Material;
+  }
+  categoryMap: {
     [ key: string] : Material[];
   }
 }

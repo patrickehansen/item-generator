@@ -77,6 +77,10 @@
   float: right;
 }
 
+.pullLeft {
+  float: left;
+}
+
 .center {
   margin: auto;
   display: block;
@@ -136,4 +140,8 @@
     font-size: 16px;
     font-weight: 600;
   }
+}
+
+.delete {
+  color: red;
 }

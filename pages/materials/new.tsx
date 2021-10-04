@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link'
-import Grid from '@mui/material/Grid'
-import Button from '@mui/material/Button'
+import MaterialForm from '../../components/forms/materialForm'
 import { addMaterial } from '../../requests/materials/addMaterial'
 import { Card } from '../../components/card'
 import { SuccessPanel } from '../../components/success'
@@ -35,7 +34,7 @@ async function submitForm(e, setAddedMaterial) {
   }
 }
 
-export default function NewMaterialForm() {
+export default function NewMaterial() {
   const [ successMessage, setSuccessMessage ]  = useState(null);
 
   return (
@@ -52,137 +51,10 @@ export default function NewMaterialForm() {
             New Material
           </h3>
           <div style={{height: '30px'}} />
-          <form className={styles.form} onSubmit={(e) => {submitForm(e, setSuccessMessage)}}>
-              <Grid container spacing={2}>
-                <Grid item xs={12} sm={3} >
-                  <label htmlFor="name">
-                    Name:
-                  </label>
-                </Grid>
-                <Grid item xs={12} sm={9}>
-                  <input 
-                    type="text"
-                    id="name"
-                    required
-
-                  />
-                </Grid>
-                <Grid item xs={12} sm={3} >
-                  <label htmlFor="category">
-                    Category:
-                  </label>
-                </Grid>
-                <Grid item xs={12} sm={9}>
-                  <input 
-                    type="text"
-                    id="category"
-                    required
-
-                  />
-                </Grid>
-              
-                <Grid item xs={12} sm={6} >
-                  <label htmlFor="meltingTemperature">
-                    Melting Temperature:
-                  </label>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <input 
-                    type="number"
-                    id="meltingTemperature"
-
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6} >
-                  <label htmlFor="craftingDifficulty">
-                    Crafting Difficulty:
-                  </label>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <select defaultValue={0} id="craftingDifficulty">
-                    <option value={0}>
-                      Trivial
-                    </option>
-                    <option value={1}>
-                      Easy
-                    </option>
-                    <option value={2}>
-                      Moderate
-                    </option>
-                    <option value={3}>
-                      Somewhat Hard
-                    </option>
-                    <option value={4}>
-                      Hard
-                    </option>
-                    <option value={5}>
-                      Very Hard
-                    </option>
-                    <option value={6}>
-                      Extremely Hard
-                    </option>
-                    <option value={7}>
-                      GLHF
-                    </option>
-                  </select>
-                </Grid>
-                <Grid item xs={12} sm={6} >
-                  <label htmlFor="hardness">
-                    Hardness:
-                  </label>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <input 
-                    type="number"
-                    id="hardness"
-                    step="0.25"
-
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6} >
-                  <label htmlFor="damage">
-                    Damage per panel:
-                  </label>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <input 
-                    type="number"
-                    id="damage"
-                    step="0.25"
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6} >
-                  <label htmlFor="armor">
-                    Armor per panel:
-                  </label>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <input 
-                    type="number"
-                    id="armor"
-                    step="0.25"
-                  />
-                </Grid>
-                <Grid item xs={12} sm={6} >
-                  <label htmlFor="weight">
-                    Weight:
-                  </label>
-                </Grid>
-                <Grid item xs={12} sm={6}>
-                  <input 
-                    type="number"
-                    id="weight"
-                    step="0.25"
-                  />
-                </Grid>
-
-                <Grid item xs={12}>
-                  <Button type="submit" className={styles.pullRight} variant="contained">
-                    Submit
-                  </Button>
-                </Grid>
-              </Grid>
-            </form>
+          <MaterialForm 
+            onSubmit={(e) => {submitForm(e, setSuccessMessage)}}
+            material={null}
+          />
         </Card>
         {successMessage && <SuccessPanel message={successMessage} />}
       </main>
