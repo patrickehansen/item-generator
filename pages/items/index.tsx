@@ -5,11 +5,15 @@ import { useSelector, useDispatch  } from 'react-redux'
 import { RootState } from '../../types/store';
 import { getTemplates } from '../../requests/templates/getTemplates';
 import ItemForm from '../../components/forms/itemForm'
+import { addItem } from '../../requests/items/addItem'
+import { getItems } from '../../requests/items/getItems'
+import ItemList from '../../components/tables/itemTable'
 import styles from '../../styles/shared.module.scss'
 
 export default function Items() {
   const templates = useSelector((state: RootState) => state.templates.allTemplates);
   const templateMap = useSelector((state: RootState) => state.templates.templateMap);
+  const items = useSelector((state: RootState) => state.items.allItems);
   const [ selectedTemplate, setSelectedTemplate ] = useState(null);
   const [fetched, setFetched] = useState(false);
 
@@ -17,6 +21,7 @@ export default function Items() {
 
   if (!templates.length && !fetched) {
     fetchTemplates();
+    fetchItems();
   }
 
   async function fetchTemplates() {
@@ -29,12 +34,22 @@ export default function Items() {
     })
   }
 
-  async function submitForm(e) {
+  async function fetchItems() {
     try {
-      e.preventDefault();
-      const t = e.target;
-      console.log('onsubmit', e)
+      setFetched(true);
+      const items = await getItems();
+      dispatch({
+        type: 'setItems',
+        data: items
+      })
+    } catch (error) {
+      console.error('Error in get items::err', error)
+    }
+  }
 
+  async function submitForm(item) {
+    try {
+      await addItem(item);
     } catch (error) {
       console.error('Error in submit form new template::err', error)
     }
@@ -93,6 +108,11 @@ export default function Items() {
             </Card>
           )
         }
+        <Card>
+          <ItemList 
+            list={items}
+          />
+        </Card>
       </main>
     </div>
   )

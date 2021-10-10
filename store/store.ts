@@ -1,12 +1,14 @@
 import { createStore, combineReducers } from '@reduxjs/toolkit'
 import materialReducer from './reducers/materialReducer'
 import templateReducer from './reducers/templateReducer'
+import itemReducer from './reducers/itemReducer'
 import { RootState } from '../types/store';
 
 const store = createStore<RootState, any, any, any>(
   combineReducers({
     materials: materialReducer,
     templates: templateReducer,
+    items: itemReducer,
   })
 )
 

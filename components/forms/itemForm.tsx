@@ -16,10 +16,10 @@ interface Props {
   }
 }
 
-interface Calculated {
-  bonus: string;
-  base: number;
-}
+// interface Calculated {
+//   bonus: string;
+//   base: number;
+// }
 
 export default function ItemForm({template, onSubmit}: Props): JSX.Element {
   const [ calculated, setCalculated ] = useState(null);
@@ -78,9 +78,20 @@ export default function ItemForm({template, onSubmit}: Props): JSX.Element {
     navigator.clipboard.writeText(`${newName}\t${calculated.base} + ${calculated.bonus}`)
   }
 
+  function exportItem(e) {
+    e.preventDefault();
+
+    onSubmit({
+      Name: newName,
+      Damage: `${calculated.base} + ${calculated.bonus}`,
+      Category: template.Category,
+      Type: template.Type,
+    })
+  }
+
   return (
     <Card>
-      <form className={styles.form} onSubmit={(e) => {onSubmit(e)}}>
+      <form className={styles.form} onSubmit={exportItem}>
         <Grid container spacing={2}>
         <Grid item xs={12} sm={3} >
             <label htmlFor="name">
@@ -126,13 +137,16 @@ export default function ItemForm({template, onSubmit}: Props): JSX.Element {
           }
 
           <Grid item xs={12}>
-            {
-              calculated && <Button  onClick={copyToClipboard}>
-                <AssignmentIcon/>
-              </Button>
-            }
+            <Button onClick={copyToClipboard} disabled={!calculated}>
+              <AssignmentIcon/>
+            </Button>
             
-            <Button type="submit" className={styles.pullRight} variant="contained">
+            <Button 
+              type="submit" 
+              className={styles.pullRight} 
+              variant="contained"
+              disabled={!calculated}
+            >
               Save
             </Button>
           </Grid>

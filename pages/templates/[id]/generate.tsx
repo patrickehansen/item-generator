@@ -6,7 +6,7 @@ import { Card } from '../../../components/card'
 import { RootState } from '../../../types/store'
 import styles from '../../../styles/shared.module.scss'
 import { SuccessPanel } from '../../../components/success'
-import { addTemplate } from '../../../requests/templates/addTemplate'
+import { addItem } from '../../../requests/items/addItem'
 
 import ItemForm from '../../../components/forms/itemForm'
 
@@ -19,17 +19,17 @@ export default function Generate() {
   const template = useSelector((state: RootState) => state.templates.templateMap[id as string])
 
   if (!template) {
+    return <div />
     // get template
   }
-  
-  async function submitForm(e) {
-    try {
-      e.preventDefault();
-      const t = e.target;
-      console.log('onsubmit', e)
 
+  async function submitForm(item) {
+    try {
+      await addItem(item);
+
+      setSuccessMessage(`added ${item.Name}`)
     } catch (error) {
-      console.error('Error in submit form new template::err', error)
+      console.error('Error in submit form new item::err', error)
     }
   }
 
