@@ -62,7 +62,7 @@ export default function ItemForm({template, onSubmit}: Props): JSX.Element {
 
     setCalculated({
       base: template.BaseDice,
-      bonus: bonus,
+      bonus: Math.ceil(bonus),
     })
   }
 
