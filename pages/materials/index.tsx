@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import Head from 'next/head'
 import Link from 'next/link'
 import { useSelector, useDispatch  } from 'react-redux'
 import { LinkCard, Card } from '../../components/card'
@@ -8,9 +9,6 @@ import { RootState } from '../../types/store';
 import { Material } from '../../types/material';
 import { getMaterials } from '../../requests/materials/getMaterials';
 import { DeleteMaterialModal } from '../../components/modals/deleteMaterialModal';
-
-
-
 
 export default function Materials() {
 
@@ -39,6 +37,10 @@ export default function Materials() {
           ← Back to overview
         </a>
       </Link>
+
+      <Head>
+        <title>Materials</title>
+      </Head>
 
       <main>
         <h1 className={styles.title}>
